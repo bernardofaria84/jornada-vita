@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jornada Vita — Área de Membros</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Jost', sans-serif;
+  background: #FAF7F2;
+  color: #2C2416;
+  min-height: 100vh;
+}
+
+/* ── HEADER ── */
+.header {
+  background: #2C2416;
+  padding: 16px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.logo-nome {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: 20px;
+  color: #E8D9C4;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+.logo-sub {
+  font-size: 9px;
+  color: #7A6B5A;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+.header-badge {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #C19C6E;
+  border: 0.5px solid rgba(193,156,110,0.35);
+  padding: 5px 14px;
+  border-radius: 20px;
+}
+
+/* ── HERO ── */
+.hero {
+  background: linear-gradient(160deg, #2C2416 0%, #3D2F1E 60%, #4A3728 100%);
+  padding: 44px 28px 36px;
+  text-align: center;
+}
+.hero-tag {
+  display: inline-block;
+  font-size: 9px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #C19C6E;
+  border: 0.5px solid rgba(193,156,110,0.35);
+  padding: 5px 16px;
+  border-radius: 20px;
+  margin-bottom: 18px;
+}
+.hero-titulo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  font-weight: 300;
+  color: #EDE0CC;
+  line-height: 1.2;
+  margin-bottom: 6px;
+}
+.hero-titulo em { font-style: italic; color: #C19C6E; }
+.hero-sub {
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #7A6B5A;
+  margin-bottom: 24px;
+}
+.progress-wrap {
+  background: rgba(255,255,255,0.08);
+  border-radius: 20px;
+  height: 5px;
+  max-width: 300px;
+  margin: 0 auto 8px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: #C19C6E;
+  border-radius: 20px;
+  transition: width 1s ease;
+}
+.progress-label {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #5C4A38;
+}
+
+/* ── CONTEÚDO ── */
+.content {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 28px 20px 48px;
+}
+
+/* ── STATS ── */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 28px;
+}
+.stat {
+  background: #fff;
+  border: 0.5px solid #E4D9CC;
+  border-radius: 10px;
+  padding: 16px 10px;
+  text-align: center;
+}
+.stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 30px;
+  font-weight: 500;
+  color: #2C2416;
+  line-height: 1;
+}
+.stat-label {
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #9C8B76;
+  margin-top: 4px;
+}
+
+/* ── SECTION LABEL ── */
+.section-label {
+  font-size: 9px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #C19C6E;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 0.5px;
+  background: #D4C4B0;
+}
+
+/* ── SEMANA CARD ── */
+.semana-card {
+  background: #fff;
+  border: 0.5px solid #E4D9CC;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+.semana-card:hover { border-color: #C9B49A; }
+.semana-card.ativa { border-color: #C19C6E; }
+.semana-card.concluida { border-color: #4A7C59; }
+
+.semana-header {
+  display: flex;
+  align-items: center;
+  padding: 16px 18px;
+  gap: 14px;
+  cursor: pointer;
+}
+.semana-num {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+  font-weight: 500;
+  flex-shrink: 0;
+  border: 0.5px solid #D4C4B0;
+  background: #FAF7F2;
+  color: #6B5744;
+}
+.semana-num.ativa { background: #2C2416; color: #C19C6E; border-color: #2C2416; }
+.semana-num.concluida { background: #4A7C59; color: #fff; border-color: #4A7C59; }
+.semana-num.bloqueada { color: #C4B8A8; border-color: #E8E0D8; }
+
+.semana-info { flex: 1; }
+.semana-tag {
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #A08060;
+  margin-bottom: 3px;
+}
+.semana-titulo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 19px;
+  font-weight: 500;
+  color: #2C2416;
+  line-height: 1.2;
+}
+.semana-titulo.bloqueada { color: #B8ACA0; }
+
+.semana-badge {
+  font-size: 10px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 0.5px solid;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+.badge-concluida { color: #4A7C59; border-color: #4A7C59; background: #EEF6F1; }
+.badge-ativa { color: #8B5E3C; border-color: #C19C6E; background: #FBF4EA; }
+.badge-breve { color: #B8ACA0; border-color: #D4C4B0; background: transparent; }
+
+/* ── CORPO DA SEMANA (vídeo + aulas) ── */
+.semana-body {
+  border-top: 0.5px solid #F0E8DE;
+  padding: 0 18px 18px 70px;
+  display: none;
+}
+.semana-body.aberta { display: block; }
+
+/* ── PLAYER ── */
+.player-wrap {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  margin: 16px 0 14px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #000;
+}
+.player-wrap iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  border: none;
+}
+/* Overlay cobre logo clicável do YouTube */
+.player-overlay {
+  position: absolute;
+  top: 0; right: 0;
+  width: 80px; height: 48px;
+  background: #000;
+  opacity: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+.player-titulo-aula {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  color: #2C2416;
+  margin-bottom: 4px;
+}
+.player-duracao {
+  font-size: 11px;
+  color: #9C8B76;
+  margin-bottom: 14px;
+}
+.player-aviso {
+  font-size: 10px;
+  color: #B8ACA0;
+  letter-spacing: 1px;
+  font-style: italic;
+  border-top: 0.5px solid #F0E8DE;
+  padding-top: 10px;
+  margin-bottom: 14px;
+}
+
+/* ── LINHA DE AULA (semanas com múltiplas aulas) ── */
+.aula-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 0.5px solid #F5EEE6;
+}
+.aula-item:last-of-type { border-bottom: none; }
+.play-btn {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: #2C2416;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.aula-info { flex: 1; }
+.aula-titulo { font-size: 13px; font-weight: 500; color: #2C2416; margin-bottom: 1px; }
+.aula-dur { font-size: 11px; color: #9C8B76; }
+.material-btn {
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #C19C6E;
+  border: 0.5px solid rgba(193,156,110,0.4);
+  padding: 4px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* ── BOTÃO CONCLUIR ── */
+.btn-concluir {
+  display: block;
+  width: 100%;
+  background: transparent;
+  border: 0.5px solid #C19C6E;
+  color: #C19C6E;
+  padding: 11px;
+  border-radius: 8px;
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  margin-top: 14px;
+  transition: background 0.2s, color 0.2s;
+}
+.btn-concluir:hover { background: #C19C6E; color: #fff; }
+
+/* ── BONUS ── */
+.bonus-card {
+  background: #2C2416;
+  border-radius: 12px;
+  padding: 22px;
+  margin: 28px 0;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.bonus-icon {
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  background: rgba(193,156,110,0.12);
+  border: 0.5px solid rgba(193,156,110,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.bonus-titulo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+  font-weight: 400;
+  color: #EDE0CC;
+  margin-bottom: 4px;
+}
+.bonus-desc { font-size: 12px; color: #7A6B5A; line-height: 1.5; }
+
+/* ── SUPORTE ── */
+.suporte-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.suporte-card {
+  background: #fff;
+  border: 0.5px solid #E4D9CC;
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  transition: border-color 0.2s;
+}
+.suporte-card:hover { border-color: #C19C6E; }
+.suporte-label {
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #9C8B76;
+  margin-bottom: 5px;
+}
+.suporte-valor {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  color: #2C2416;
+}
+
+/* ── FOOTER ── */
+.footer {
+  text-align: center;
+  padding: 20px;
+  border-top: 0.5px solid #E4D9CC;
+  margin-top: 16px;
+}
+.footer p { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #C4B8A8; }
+
+/* ── MOBILE ── */
+@media (max-width: 480px) {
+  .hero-titulo { font-size: 28px; }
+  .stats { grid-template-columns: repeat(3, 1fr); }
+  .stat-num { font-size: 24px; }
+  .semana-body { padding-left: 18px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div>
+    <div class="logo-nome">Jornada Vita</div>
+    <div class="logo-sub">Dra. Erica Mantelli</div>
+  </div>
+  <div class="header-badge">Área de Membros</div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">Bem-vinda de volta</div>
+  <h1 class="hero-titulo">Sua jornada de<br><em>cura e consciência</em></h1>
+  <p class="hero-sub">Turma Inaugural · 8 Semanas</p>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width: 12%"></div>
+  </div>
+  <p class="progress-label" id="progressLabel">Semana 1 de 8 · início da jornada</p>
+</div>
+
+<!-- CONTEÚDO -->
+<div class="content">
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-num" id="statSemana">1</div>
+      <div class="stat-label">Semana atual</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num" id="statAulas">0</div>
+      <div class="stat-label">Aulas vistas</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">8</div>
+      <div class="stat-label">Total de semanas</div>
+    </div>
+  </div>
+
+  <!-- SEMANAS -->
+  <div class="section-label">Conteúdo da jornada</div>
+
+  <!-- SEMANA 1 -->
+  <div class="semana-card ativa" id="card-s1">
+    <div class="semana-header" onclick="toggleSemana('s1')">
+      <div class="semana-num ativa">1</div>
+      <div class="semana-info">
+        <div class="semana-tag">Semana 1 · Em andamento</div>
+        <div class="semana-titulo">Despertar</div>
+      </div>
+      <div class="semana-badge badge-ativa">Assistir</div>
+    </div>
+    <div class="semana-body aberta" id="body-s1">
+      <!-- PLAYER — trocar ID_S1 pelo ID do vídeo do YouTube -->
+      <div class="player-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/ID_S1?rel=0&modestbranding=1&iv_load_policy=3&cc_load_policy=0&playsinline=1"
+          allow="autoplay; encrypted-media" allowfullscreen>
+        </iframe>
+        <div class="player-overlay"></div>
+      </div>
+      <div class="player-titulo-aula">Semana 1 — Despertar</div>
+      <div class="player-duracao">Encontro ao vivo · Dra. Erica Mantelli</div>
+      <div class="player-aviso">Conteúdo exclusivo e protegido. O compartilhamento não autorizado resultará no cancelamento imediato do acesso, sem direito a reembolso.</div>
+      <!-- Link para material — trocar # pela URL real do PDF no Google Drive -->
+      <a href="#" target="_blank" class="material-btn">📄 Material de apoio</a>
+      <!-- Link para o Google Forms — trocar # pela URL do form pré-preenchido -->
+      <a href="#" target="_blank" class="btn-concluir">✓ &nbsp; Concluí esta aula</a>
+    </div>
+  </div>
+
+  <!-- SEMANA 2 -->
+  <div class="semana-card" id="card-s2">
+    <div class="semana-header" onclick="toggleSemana('s2')">
+      <div class="semana-num bloqueada">2</div>
+      <div class="semana-info">
+        <div class="semana-tag">Semana 2</div>
+        <div class="semana-titulo bloqueada">Código do Corpo Feminino</div>
+      </div>
+      <div class="semana-badge badge-breve">Em breve</div>
+    </div>
+    <div class="semana-body" id="body-s2">
+      <div style="padding: 16px 0; font-size: 13px; color: #9C8B76; font-style: italic;">
+        Esta semana será liberada em breve. Você receberá um aviso por email.
+      </div>
+    </div>
+  </div>
+
+  <!-- SEMANA 3 -->
+  <div class="semana-card" id="card-s3">
+    <div class="semana-header" onclick="toggleSemana('s3')">
+      <div class="semana-num bloqueada">3</div>
+      <div class="semana-info">
+        <div class="semana-tag">Semana 3</div>
+        <div class="semana-titulo bloqueada">Comum não é Normal</div>
+      </div>
+      <div class="semana-badge badge-breve">Em breve</div>
+    </div>
+    <div class="semana-body" id="body-s3">
+      <div style="padding: 16px 0; font-size: 13px; color: #9C8B76; font-style: italic;">
+        Esta semana será liberada em breve.
+      </div>
+    </div>
+  </div>
+
+  <!-- SEMANA 4 -->
+  <div class="semana-card" id="card-s4">
+    <div class="semana-header" onclick="toggleSemana('s4')">
+      <div class="semana-num bloqueada">4</div>
+      <div class="semana-info">
+        <div class="semana-tag">Semana 4</div>
+        <div class="semana-titulo bloqueada">A Energia Roubada</div>
+      </div>
+      <div class="semana-badge badge-breve">Em breve</div>
+    </div>
+    <div class="semana-body" id="body-s4">
+      <div style="padding: 16px 0; font-size: 13px; color: #9C8B76; font-style: italic;">Esta semana será liberada em breve.</div>
+    </div>
+  </div>
+
+  <!-- SEMANA 5 -->
+  <div class="semana-card" id="card-s5">
+    <div class="semana-header" onclick="toggleSemana('s5')">
+      <div class="semana-num bloqueada">5</div>
+      <div class="semana-info">
+        <div class="semana-tag">Semana 5</div>
+        <div class="semana-titulo bloqueada">O Corpo que Protege a Vida</div>
+      </div>
+      <div class="semana-badge badge-breve">Em breve</div>
+    </div>
+    <div class="semana-body" id="body-s5">
+      <div style="padding: 16px 0; font-size: 13px; color: #9C8B76; font-style: italic;">Esta semana será liberada em breve.</div>
+    </div>
+  </div>
+
+  <!-- SEMANA 6 -->
+  <div class="semana-card" id="card-s6">
+    <div class="semana-header" onclick="toggleSemana('s6')">
+      <div class="semana-num bloqueada">6</div>
+      <div class="semana-info">
+        <div class="semana-tag">Semana 6</div>
+        <div class="semana-titulo bloqueada">Peso Invisível</div>
+      </div>
+      <div class="semana-badge badge-breve">Em breve</div>
+    </div>
+    <div class="semana-body" id="body-s6">
+      <div style="padding: 16px 0; font-size: 13px; color: #9C8B76; font-style: italic;">Esta semana será liberada em breve.</div>
+    </div>
+  </div>
+
+  <!-- SEMANA 7 -->
+  <div class="semana-card" id="card-s7">
+    <div class="semana-header" onclick="toggleSemana('s7')">
+      <div class="semana-num bloqueada">7</div>
+      <div class="semana-info">
+        <div class="semana-tag">Semana 7</div>
+        <div class="semana-titulo bloqueada">Sexualidade Feminina</div>
+      </div>
+      <div class="semana-badge badge-breve">Em breve</div>
+    </div>
+    <div class="semana-body" id="body-s7">
+      <div style="padding: 16px 0; font-size: 13px; color: #9C8B76; font-style: italic;">Esta semana será liberada em breve.</div>
+    </div>
+  </div>
+
+  <!-- SEMANA 8 -->
+  <div class="semana-card" id="card-s8">
+    <div class="semana-header" onclick="toggleSemana('s8')">
+      <div class="semana-num bloqueada">8</div>
+      <div class="semana-info">
+        <div class="semana-tag">Semana 8</div>
+        <div class="semana-titulo bloqueada">A Mulher que Você Escolhe Ser</div>
+      </div>
+      <div class="semana-badge badge-breve">Em breve</div>
+    </div>
+    <div class="semana-body" id="body-s8">
+      <div style="padding: 16px 0; font-size: 13px; color: #9C8B76; font-style: italic;">Esta semana será liberada em breve.</div>
+    </div>
+  </div>
+
+  <!-- BÔNUS -->
+  <div class="bonus-card">
+    <div class="bonus-icon">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="12" r="9" stroke="#C19C6E" stroke-width="1"/>
+        <path d="M8 12l3 3 5-5" stroke="#C19C6E" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div>
+      <div class="bonus-titulo">Encontro presencial com a Dra. Erica</div>
+      <div class="bonus-desc">Exclusivo para as 50 primeiras inscritas. Seu acesso está confirmado. Detalhes serão enviados por email.</div>
+    </div>
+  </div>
+
+  <!-- SUPORTE -->
+  <div class="section-label">Suporte</div>
+  <div class="suporte-grid">
+    <!-- Trocar # pelo link do WhatsApp da Dra. Erica -->
+    <a href="#" target="_blank" class="suporte-card">
+      <div class="suporte-label">Dúvidas</div>
+      <div class="suporte-valor">WhatsApp</div>
+    </a>
+    <div class="suporte-card">
+      <div class="suporte-label">Certificado</div>
+      <div class="suporte-valor" style="color: #B8ACA0;">Ao concluir</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <p>Jornada Vita · Mantelli Vita · Clínica Mantelli · © 2026</p>
+</div>
+
+<script>
+// ══════════════════════════════════════════════
+// ACCORDION — abre/fecha corpo das semanas
+// ══════════════════════════════════════════════
+function toggleSemana(id) {
+  const body = document.getElementById('body-' + id);
+  const isAberta = body.classList.contains('aberta');
+  // Fecha todas
+  document.querySelectorAll('.semana-body').forEach(b => b.classList.remove('aberta'));
+  // Abre a clicada (se estava fechada)
+  if (!isAberta) body.classList.add('aberta');
+}
+
+// ══════════════════════════════════════════════
+// COMO LIBERAR UMA NOVA SEMANA
+// ══════════════════════════════════════════════
+// Quando a Dra. Erica publicar o vídeo da Semana 2,
+// edite este arquivo e substitua o bloco da Semana 2
+// pelo modelo abaixo (copie da Semana 1 e ajuste):
+//
+// 1. No card: troque class para "semana-card ativa"
+// 2. No num:  troque class para "semana-num ativa"
+// 3. Na tag:  atualize o texto para "Semana 2 · Em andamento"
+// 4. No badge: troque para "semana-badge badge-ativa" e texto "Assistir"
+// 5. No body: adicione o iframe com o ID do novo vídeo
+// 6. Troque o link do material e do botão "Concluí"
+//
+// Depois faça commit no GitHub — a página atualiza em segundos.
+// ══════════════════════════════════════════════
+
+// ══════════════════════════════════════════════
+// PROTEÇÕES BÁSICAS
+// ══════════════════════════════════════════════
+document.addEventListener('contextmenu', e => e.preventDefault());
+document.addEventListener('dragstart', e => e.preventDefault());
+document.addEventListener('selectstart', e => e.preventDefault());
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'F12') { e.preventDefault(); return false; }
+  if (e.ctrlKey && e.key === 'u') { e.preventDefault(); return false; }
+  if (e.ctrlKey && e.shiftKey && ['I','J','C'].includes(e.key)) { e.preventDefault(); return false; }
+});
+</script>
+</body>
+</html>
