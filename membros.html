@@ -228,6 +228,56 @@ body {
 .badge-ativa { color: #8B5E3C; border-color: #C19C6E; background: #FBF4EA; }
 .badge-breve { color: #B8ACA0; border-color: #D4C4B0; background: transparent; }
 
+/* ── BADGE AO VIVO ── */
+.badge-live {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #fff;
+  border-color: #C0392B;
+  background: #C0392B;
+  font-weight: 500;
+  letter-spacing: 2px;
+}
+.live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #fff;
+  flex-shrink: 0;
+  animation: pulse-live 1.4s ease-in-out infinite;
+}
+@keyframes pulse-live {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.7); }
+}
+
+/* Card com borda vermelha quando está ao vivo */
+.semana-card.aovivo { border-color: #C0392B; }
+.semana-num.aovivo  { background: #C0392B; color: #fff; border-color: #C0392B; }
+
+/* Banner "Ao vivo agora" dentro do body da semana */
+.live-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fdf1f0;
+  border: 0.5px solid rgba(192,57,43,0.25);
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin: 14px 0 10px;
+  font-size: 12px;
+  color: #922b21;
+  letter-spacing: 1px;
+}
+.live-banner-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #C0392B;
+  flex-shrink: 0;
+  animation: pulse-live 1.4s ease-in-out infinite;
+}
+
 /* ── CORPO DA SEMANA (vídeo + aulas) ── */
 .semana-body {
   border-top: 0.5px solid #F0E8DE;
@@ -460,32 +510,81 @@ body {
   <!-- SEMANAS -->
   <div class="section-label">Conteúdo da jornada</div>
 
-  <!-- SEMANA 1 -->
-  <div class="semana-card ativa" id="card-s1">
+  <!--
+  ╔══════════════════════════════════════════════════════════════╗
+  ║  GUIA DE ESTADOS DE CADA SEMANA                             ║
+  ║                                                              ║
+  ║  ESTADO 1 — EM BREVE (padrão inicial)                       ║
+  ║    card:  class="semana-card"                                ║
+  ║    num:   class="semana-num bloqueada"                       ║
+  ║    badge: class="semana-badge badge-breve" → texto "Em breve"║
+  ║    body:  só texto informativo, sem player                   ║
+  ║                                                              ║
+  ║  ESTADO 2 — AO VIVO (no dia da live)                        ║
+  ║    card:  class="semana-card aovivo"                         ║
+  ║    num:   class="semana-num aovivo"                          ║
+  ║    badge: class="semana-badge badge-live"                    ║
+  ║           → adicionar <span class="live-dot"></span> + texto ║
+  ║    body:  live-banner + player com ID da live + sem botão    ║
+  ║           "Concluí" (live ainda está acontecendo)            ║
+  ║                                                              ║
+  ║  ESTADO 3 — ASSISTIR / REPLAY (após a live terminar)        ║
+  ║    card:  class="semana-card ativa"                          ║
+  ║    num:   class="semana-num ativa"                           ║
+  ║    badge: class="semana-badge badge-ativa" → texto "Assistir"║
+  ║    body:  player normal + material + botão "Concluí"         ║
+  ║           (mesmo ID do vídeo — YouTube salva a gravação)     ║
+  ║                                                              ║
+  ║  ESTADO 4 — CONCLUÍDA (após aluna marcar no Forms)          ║
+  ║    card:  class="semana-card concluida"                      ║
+  ║    num:   class="semana-num concluida"                       ║
+  ║    badge: class="semana-badge badge-concluida" → "Concluída" ║
+  ╚══════════════════════════════════════════════════════════════╝
+  -->
+
+  <!-- SEMANA 1 — EXEMPLO: ESTADO "AO VIVO" (ativo no dia da live) -->
+  <!-- Para mudar de estado: leia o guia acima e troque as classes -->
+  <div class="semana-card aovivo" id="card-s1">
     <div class="semana-header" onclick="toggleSemana('s1')">
-      <div class="semana-num ativa">1</div>
+      <div class="semana-num aovivo">1</div>
       <div class="semana-info">
-        <div class="semana-tag">Semana 1 · Em andamento</div>
+        <div class="semana-tag">Semana 1 · Acontecendo agora</div>
         <div class="semana-titulo">Despertar</div>
       </div>
-      <div class="semana-badge badge-ativa">Assistir</div>
+      <!-- Badge ao vivo com ponto pulsante -->
+      <div class="semana-badge badge-live">
+        <span class="live-dot"></span>Ao vivo
+      </div>
     </div>
     <div class="semana-body aberta" id="body-s1">
-      <!-- PLAYER — trocar ID_S1 pelo ID do vídeo do YouTube -->
+
+      <!-- Banner de aviso de live ativa -->
+      <div class="live-banner">
+        <span class="live-banner-dot"></span>
+        A aula está acontecendo agora — assista ao vivo aqui
+      </div>
+
+      <!-- PLAYER — trocar ID_S1 pelo ID da live do YouTube -->
+      <!-- Após a live terminar, o mesmo ID exibe a gravação automaticamente -->
       <div class="player-wrap">
         <iframe
-          src="https://www.youtube.com/embed/ID_S1?rel=0&modestbranding=1&iv_load_policy=3&cc_load_policy=0&playsinline=1"
+          src="https://www.youtube.com/embed/ID_S1?rel=0&modestbranding=1&iv_load_policy=3&cc_load_policy=0&playsinline=1&autoplay=1"
           allow="autoplay; encrypted-media" allowfullscreen>
         </iframe>
         <div class="player-overlay"></div>
       </div>
+
       <div class="player-titulo-aula">Semana 1 — Despertar</div>
-      <div class="player-duracao">Encontro ao vivo · Dra. Erica Mantelli</div>
+      <div class="player-duracao">Ao vivo · Dra. Erica Mantelli</div>
       <div class="player-aviso">Conteúdo exclusivo e protegido. O compartilhamento não autorizado resultará no cancelamento imediato do acesso, sem direito a reembolso.</div>
-      <!-- Link para material — trocar # pela URL real do PDF no Google Drive -->
-      <a href="#" target="_blank" class="material-btn">📄 Material de apoio</a>
-      <!-- Link para o Google Forms — trocar # pela URL do form pré-preenchido -->
-      <a href="#" target="_blank" class="btn-concluir">✓ &nbsp; Concluí esta aula</a>
+
+      <!-- Material só aparece após a live — descomente quando disponível -->
+      <!-- <a href="#" target="_blank" class="material-btn">📄 Material de apoio</a> -->
+
+      <!-- Botão "Concluí" só aparece após a live terminar (estado "Assistir") -->
+      <!-- Mude o card para estado ASSISTIR e descomente a linha abaixo -->
+      <!-- <a href="#" target="_blank" class="btn-concluir">✓ &nbsp; Concluí esta aula</a> -->
+
     </div>
   </div>
 
@@ -647,20 +746,32 @@ function toggleSemana(id) {
 }
 
 // ══════════════════════════════════════════════
-// COMO LIBERAR UMA NOVA SEMANA
+// FLUXO SEMANAL — COMO ATUALIZAR CADA SEMANA
 // ══════════════════════════════════════════════
-// Quando a Dra. Erica publicar o vídeo da Semana 2,
-// edite este arquivo e substitua o bloco da Semana 2
-// pelo modelo abaixo (copie da Semana 1 e ajuste):
 //
-// 1. No card: troque class para "semana-card ativa"
-// 2. No num:  troque class para "semana-num ativa"
-// 3. Na tag:  atualize o texto para "Semana 2 · Em andamento"
-// 4. No badge: troque para "semana-badge badge-ativa" e texto "Assistir"
-// 5. No body: adicione o iframe com o ID do novo vídeo
-// 6. Troque o link do material e do botão "Concluí"
+// ANTES DA LIVE (alguns dias antes):
+//   1. Pegar o ID da live agendada no YouTube Studio
+//   2. Trocar o bloco da semana para ESTADO "AO VIVO":
+//      - card: "semana-card aovivo"
+//      - num:  "semana-num aovivo"
+//      - badge: "semana-badge badge-live" + live-dot
+//      - player: colocar o ID da live no iframe
+//   3. Commit no GitHub → página atualiza
 //
-// Depois faça commit no GitHub — a página atualiza em segundos.
+// DURANTE A LIVE:
+//   - Alunas assistem ao vivo dentro da área de membros
+//   - autoplay=1 já inicia automaticamente
+//
+// APÓS A LIVE TERMINAR:
+//   1. Trocar para ESTADO "ASSISTIR" (replay):
+//      - card: "semana-card ativa"
+//      - num:  "semana-num ativa"
+//      - badge: "semana-badge badge-ativa" → "Assistir"
+//      - Descomente o material de apoio e o botão "Concluí"
+//      - O ID do iframe NÃO muda — YouTube salva a gravação
+//        automaticamente no mesmo ID da live ✅
+//   2. Commit no GitHub
+//
 // ══════════════════════════════════════════════
 
 // ══════════════════════════════════════════════
