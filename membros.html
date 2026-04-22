@@ -792,6 +792,21 @@ function toggleSemana(id) {
 // ══════════════════════════════════════════════
 
 // ══════════════════════════════════════════════
+// REPORTAR ALTURA PARA O IFRAME PAI
+// Elimina scroll duplo na página WordPress
+// ══════════════════════════════════════════════
+function reportHeight() {
+  const height = document.body.scrollHeight;
+  window.parent.postMessage({ type: 'iframeHeight', height: height }, '*');
+}
+window.addEventListener('load', function() {
+  reportHeight();
+  setTimeout(reportHeight, 800);
+  setTimeout(reportHeight, 2000);
+});
+window.addEventListener('resize', reportHeight);
+
+// ══════════════════════════════════════════════
 // PROTEÇÕES BÁSICAS
 // ══════════════════════════════════════════════
 document.addEventListener('contextmenu', e => e.preventDefault());
