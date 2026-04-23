@@ -592,7 +592,7 @@ body {
 
       <!-- Botão "Concluí" só aparece após a live terminar (estado "Assistir") -->
       <!-- Mude o card para estado ASSISTIR e descomente a linha abaixo -->
-      <!-- <a href="https://docs.google.com/forms/d/e/1FAIpQLScKzJiQ3b2rchZmKcLlSb7CqL8MdQTG3wJIpP5BODX93evOlw/viewform?usp=pp_url&entry.1483248274=Semana+1+%E2%80%94+Despertar" target="_blank" class="btn-concluir">✓ &nbsp; Concluí esta aula</a> -->
+      <button onclick="concluirAula('s1')" class="btn-concluir">✓ &nbsp; Concluí esta aula</button>
 
     </div>
   </div>
@@ -612,7 +612,7 @@ body {
         Esta semana será liberada em breve. Você receberá um aviso por email.
       </div>
       <!-- Após a live: adicione player + descomente o botão abaixo -->
-      <!-- <a href="https://docs.google.com/forms/d/e/1FAIpQLScKzJiQ3b2rchZmKcLlSb7CqL8MdQTG3wJIpP5BODX93evOlw/viewform?usp=pp_url&entry.1483248274=Semana+2+%E2%80%94+C%C3%B3digo+do+Corpo+Feminino" target="_blank" class="btn-concluir">✓ &nbsp; Concluí esta aula</a> -->
+      <button onclick="concluirAula('s2')" class="btn-concluir">✓ &nbsp; Concluí esta aula</button>
     </div>
   </div>
 
@@ -630,7 +630,7 @@ body {
       <div style="padding: 16px 0; font-size: 13px; color: #9C8B76; font-style: italic;">
         Esta semana será liberada em breve.
       </div>
-      <!-- <a href="https://docs.google.com/forms/d/e/1FAIpQLScKzJiQ3b2rchZmKcLlSb7CqL8MdQTG3wJIpP5BODX93evOlw/viewform?usp=pp_url&entry.1483248274=Semana+3+%E2%80%94+Comum+n%C3%A3o+%C3%A9+Normal" target="_blank" class="btn-concluir">✓ &nbsp; Concluí esta aula</a> -->
+      <button onclick="concluirAula('s3')" class="btn-concluir">✓ &nbsp; Concluí esta aula</button>
     </div>
   </div>
 
@@ -646,7 +646,7 @@ body {
     </div>
     <div class="semana-body" id="body-s4">
       <div style="padding: 16px 0; font-size: 13px; color: #9C8B76; font-style: italic;">Esta semana será liberada em breve.</div>
-      <!-- <a href="https://docs.google.com/forms/d/e/1FAIpQLScKzJiQ3b2rchZmKcLlSb7CqL8MdQTG3wJIpP5BODX93evOlw/viewform?usp=pp_url&entry.1483248274=Semana+4+%E2%80%94+A+Energia+Roubada" target="_blank" class="btn-concluir">✓ &nbsp; Concluí esta aula</a> -->
+      <button onclick="concluirAula('s4')" class="btn-concluir">✓ &nbsp; Concluí esta aula</button>
     </div>
   </div>
 
@@ -662,7 +662,7 @@ body {
     </div>
     <div class="semana-body" id="body-s5">
       <div style="padding: 16px 0; font-size: 13px; color: #9C8B76; font-style: italic;">Esta semana será liberada em breve.</div>
-      <!-- <a href="https://docs.google.com/forms/d/e/1FAIpQLScKzJiQ3b2rchZmKcLlSb7CqL8MdQTG3wJIpP5BODX93evOlw/viewform?usp=pp_url&entry.1483248274=Semana+5+%E2%80%94+O+Corpo+que+Protege+a+Vida" target="_blank" class="btn-concluir">✓ &nbsp; Concluí esta aula</a> -->
+      <button onclick="concluirAula('s5')" class="btn-concluir">✓ &nbsp; Concluí esta aula</button>
     </div>
   </div>
 
@@ -678,7 +678,7 @@ body {
     </div>
     <div class="semana-body" id="body-s6">
       <div style="padding: 16px 0; font-size: 13px; color: #9C8B76; font-style: italic;">Esta semana será liberada em breve.</div>
-      <!-- <a href="https://docs.google.com/forms/d/e/1FAIpQLScKzJiQ3b2rchZmKcLlSb7CqL8MdQTG3wJIpP5BODX93evOlw/viewform?usp=pp_url&entry.1483248274=Semana+6+%E2%80%94+Peso+Invis%C3%ADvel" target="_blank" class="btn-concluir">✓ &nbsp; Concluí esta aula</a> -->
+      <button onclick="concluirAula('s6')" class="btn-concluir">✓ &nbsp; Concluí esta aula</button>
     </div>
   </div>
 
@@ -694,7 +694,7 @@ body {
     </div>
     <div class="semana-body" id="body-s7">
       <div style="padding: 16px 0; font-size: 13px; color: #9C8B76; font-style: italic;">Esta semana será liberada em breve.</div>
-      <!-- <a href="https://docs.google.com/forms/d/e/1FAIpQLScKzJiQ3b2rchZmKcLlSb7CqL8MdQTG3wJIpP5BODX93evOlw/viewform?usp=pp_url&entry.1483248274=Semana+7+%E2%80%94+Sexualidade+Feminina" target="_blank" class="btn-concluir">✓ &nbsp; Concluí esta aula</a> -->
+      <button onclick="concluirAula('s7')" class="btn-concluir">✓ &nbsp; Concluí esta aula</button>
     </div>
   </div>
 
@@ -710,7 +710,7 @@ body {
     </div>
     <div class="semana-body" id="body-s8">
       <div style="padding: 16px 0; font-size: 13px; color: #9C8B76; font-style: italic;">Esta semana será liberada em breve.</div>
-      <!-- <a href="https://docs.google.com/forms/d/e/1FAIpQLScKzJiQ3b2rchZmKcLlSb7CqL8MdQTG3wJIpP5BODX93evOlw/viewform?usp=pp_url&entry.1483248274=Semana+8+%E2%80%94+A+Mulher+que+Voc%C3%AA+Escolhe+Ser" target="_blank" class="btn-concluir">✓ &nbsp; Concluí esta aula</a> -->
+      <button onclick="concluirAula('s8')" class="btn-concluir">✓ &nbsp; Concluí esta aula</button>
     </div>
   </div>
 
@@ -793,18 +793,122 @@ function toggleSemana(id) {
 
 // ══════════════════════════════════════════════
 // REPORTAR ALTURA PARA O IFRAME PAI
-// Elimina scroll duplo na página WordPress
 // ══════════════════════════════════════════════
 function reportHeight() {
   const height = document.body.scrollHeight;
   window.parent.postMessage({ type: 'iframeHeight', height: height }, '*');
 }
+window.addEventListener('resize', reportHeight);
+
+// ══════════════════════════════════════════════
+// SISTEMA DE PROGRESSO — WORDPRESS AJAX
+// ══════════════════════════════════════════════
+
+// Mapa de semanas para atualizar UI
+const SEMANAS = {
+  s1: 'card-s1', s2: 'card-s2', s3: 'card-s3', s4: 'card-s4',
+  s5: 'card-s5', s6: 'card-s6', s7: 'card-s7', s8: 'card-s8'
+};
+
+// Aplica estado "Concluída" visualmente num card
+function marcarConcluida(semanaId) {
+  const card = document.getElementById('card-' + semanaId);
+  if (!card) return;
+
+  // Atualiza classe do card
+  card.classList.remove('ativa', 'aovivo');
+  card.classList.add('concluida');
+
+  // Atualiza círculo numerado
+  const num = card.querySelector('.semana-num');
+  if (num) {
+    num.classList.remove('ativa', 'aovivo', 'bloqueada');
+    num.classList.add('concluida');
+  }
+
+  // Atualiza badge
+  const badge = card.querySelector('.semana-badge');
+  if (badge) {
+    badge.className = 'semana-badge badge-concluida';
+    badge.textContent = 'Concluída';
+  }
+
+  // Atualiza tag
+  const tag = card.querySelector('.semana-tag');
+  if (tag) tag.textContent = tag.textContent.replace('Em andamento', 'Concluída');
+
+  // Desativa botão "Concluí"
+  const btn = card.querySelector('.btn-concluir');
+  if (btn) {
+    btn.textContent = '✓ Aula concluída';
+    btn.style.background = '#4A7C59';
+    btn.style.color = '#fff';
+    btn.style.borderColor = '#4A7C59';
+    btn.style.cursor = 'default';
+    btn.onclick = function(e) { e.preventDefault(); };
+  }
+}
+
+// Atualiza stats (aulas vistas e semana atual)
+function atualizarStats(total) {
+  const el = document.getElementById('statAulas');
+  if (el) el.textContent = total;
+
+  // Semana atual = próxima após a última concluída
+  const semanaAtual = document.getElementById('statSemana');
+  if (semanaAtual && total < 8) semanaAtual.textContent = total + 1;
+
+  // Barra de progresso
+  const bar = document.getElementById('progressBar');
+  const label = document.getElementById('progressLabel');
+  const pct = Math.round((total / 8) * 100);
+  if (bar) bar.style.width = pct + '%';
+  if (label) label.textContent = 'Semana ' + (total + 1) + ' de 8 · ' + pct + '% concluído';
+}
+
+// Recebe mensagens do WordPress pai
+window.addEventListener('message', function(e) {
+  if (!e.data || typeof e.data !== 'object') return;
+
+  // WordPress enviou o progresso salvo
+  if (e.data.type === 'carregarProgresso') {
+    const prog = e.data.progresso || {};
+    Object.keys(prog).forEach(function(sem) {
+      if (prog[sem] && prog[sem].concluida) marcarConcluida(sem);
+    });
+    atualizarStats(e.data.total || 0);
+
+    // Atualiza nome se disponível
+    if (e.data.nome) {
+      const heroTag = document.querySelector('.hero-tag');
+      if (heroTag) heroTag.textContent = 'Bem-vinda de volta, ' + e.data.nome.split(' ')[0];
+    }
+
+    reportHeight();
+  }
+
+  // WordPress confirmou que salvou
+  if (e.data.type === 'progressoSalvo') {
+    marcarConcluida(e.data.semana);
+    atualizarStats(e.data.total || 0);
+    reportHeight();
+  }
+});
+
+// Função chamada pelo botão "Concluí esta aula"
+function concluirAula(semanaId) {
+  window.parent.postMessage({ type: 'concluirSemana', semana: semanaId }, '*');
+}
+
+// Avisa o WordPress que o iframe está pronto
 window.addEventListener('load', function() {
   reportHeight();
   setTimeout(reportHeight, 800);
-  setTimeout(reportHeight, 2000);
+  setTimeout(function() {
+    window.parent.postMessage({ type: 'iframeReady' }, '*');
+    reportHeight();
+  }, 1000);
 });
-window.addEventListener('resize', reportHeight);
 
 // ══════════════════════════════════════════════
 // PROTEÇÕES BÁSICAS
