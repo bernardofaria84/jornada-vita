@@ -379,6 +379,149 @@ WordPress separa `$menu` de `$submenu`. Remover o item principal do `$menu` não
 
 ---
 
+## Plano de Negócios — ArcaAlliance (Alto Nível)
+
+### Posicionamento estratégico
+
+**Tese central:** ArcaAlliance não é uma plataforma de cursos — é uma **fintech disfarçada de plataforma de cursos**. O produto (área de membros, dashboard, gestão de alunos) é o cavalo de Tróia para capturar o float financeiro dos criadores.
+
+**Diferença fundamental vs. concorrentes:**
+
+| | Hotmart / Kiwify | ArcaAlliance |
+|---|---|---|
+| Modelo de receita | Comissão por venda (9,9%+) | Float financeiro sobre saldo custodiado |
+| Incentivo | Cobrar mais por venda | Manter dinheiro na plataforma mais tempo |
+| Alinhamento com criador | Conflitante (quanto mais ele vende, mais paga) | Alinhado (quanto mais ele vende e cresce, mais você ganha) |
+| Nicho | Genérico | Vertical: profissionais de saúde |
+
+---
+
+### Modelo de receita
+
+**Fonte primária — Float Investment:**
+- Criadores hospedam cursos e recebem pagamentos via ArcaAlliance
+- O saldo custodiado é aplicado automaticamente em CDI overnight via parceiro BaaS
+- ArcaAlliance fica com o spread entre o rendimento bruto e o que repassa ao criador
+- Taxa de comissão por venda: **zero**
+
+**Estrutura de repasse ao criador (taxas decrescentes por tempo):**
+
+| Tempo com saldo na plataforma | Criador recebe | ArcaAlliance retém |
+|---|---|---|
+| Saque imediato (D+1) | 0% do CDI | 100% |
+| 7 dias | 30% do CDI | 70% |
+| 30 dias | 50% do CDI | 50% |
+| 90 dias | 70% do CDI | 30% |
+| 180+ dias | 85% do CDI | 15% |
+
+**Fontes secundárias (futuro):**
+- Antecipação de recebíveis — criador antecipa vendas parceladas com deságio
+- Crédito com base no histórico de vendas na plataforma
+- Planos premium com features avançadas (IA, automações)
+
+---
+
+### Projeção financeira simplificada
+
+Premissa: CDI ~10,5% a.a., criador médio fatura R$ 8k/mês na plataforma, taxa média de retenção de saldo de 45 dias.
+
+| Criadores ativos | Float médio custodiado | Receita bruta anual | Margem estimada (50%) |
+|---|---|---|---|
+| 10 | R$ 120k | R$ 12.6k | R$ 6.3k |
+| 50 | R$ 600k | R$ 63k | R$ 31.5k |
+| 200 | R$ 2.4M | R$ 252k | R$ 126k |
+| 500 | R$ 6M | R$ 630k | R$ 315k |
+| 2.000 | R$ 24M | R$ 2.52M | R$ 1.26M |
+
+O modelo só se torna relevante a partir de ~200 criadores ativos. Abaixo disso, o produto SaaS e a prova de conceito são o foco — não a lucratividade.
+
+---
+
+### Estratégia de entrada no mercado
+
+#### Fase 1 — Nicho vertical (0–12 meses)
+**Foco exclusivo: profissionais de saúde.**
+
+Hotmart e Kiwify são genéricos. Um médico prefere uma plataforma feita para médicos. O Dr. Domingos é o principal canal de aquisição — acesso direto a redes médicas, conselhos regionais, grupos de especialistas.
+
+Meta: **50 criadores de saúde ativos** ao final do ano 1.
+
+Ações:
+- Usar a Jornada Vita (Dra. Erica) como caso de sucesso público
+- Palestras e presença em congressos médicos via Dr. Domingos
+- Programa de indicação: criador que indica outro criador ganha melhores taxas de repasse CDI
+- Onboarding white glove: ArcaAlliance migra tudo do Hotmart/Kiwify pelo criador
+
+#### Fase 2 — Cliente âncora (meses 3–9)
+Identificar e fechar **1 criador de saúde que fature R$ 200k+/mês**. Um único criador nesse patamar gera R$ 2.4M/ano de float — resolve o problema de volume sozinho e valida o modelo financeiro.
+
+Como chegar nele:
+- Mapeamento dos top 20 médicos criadores de conteúdo no Brasil (YouTube, Instagram)
+- Proposta personalizada: 0% de comissão + 90% do CDI por 12 meses + suporte dedicado
+- O custo desse subsídio é calculável e limitado; o valor de tê-lo como referência é multiplicador
+
+#### Fase 3 — Infraestrutura financeira (meses 6–18)
+Só após validar o modelo com criadores reais, investir na estrutura BaaS:
+
+- Contratar parceiro BaaS: **Celcoin** (maior BaaS BR), **Swap** (mais acessível para startups) ou **QI Tech**
+- Obter licença de Instituição de Pagamento junto ao BACEN — ou operar sob licença do parceiro BaaS
+- Lançar conta digital ArcaAlliance: saldo rende automaticamente, paga fornecedores, antecipa recebíveis
+
+---
+
+### Requisito regulatório (não ignorar)
+
+Custodiar dinheiro de terceiros e rentabilizá-lo requer licença do **Banco Central** como Instituição de Pagamento (IP), ou operação sob licença de uma IP parceira (BaaS).
+
+**Caminho recomendado para o MVP financeiro:**
+1. Parceria com BaaS licenciado (Celcoin, Swap, Dock)
+2. ArcaAlliance opera como **subconta** da IP parceira
+3. O BaaS cuida da custódia, liquidação e compliance; você cuida do produto
+
+Sem isso, não é possível legalmente segurar e rentabilizar o dinheiro dos criadores.
+
+---
+
+### Plano de 90 dias (ações concretas)
+
+| Semana | Ação | Responsável |
+|---|---|---|
+| 1–2 | Lançar Jornada Vita com a Dra. Erica (produção + vendas) | Bernardo + Dra. Erica |
+| 1–4 | Mapear top 20 criadores de saúde do Brasil | Bernardo |
+| 2–4 | Estruturar proposta comercial ArcaAlliance para médicos | Bernardo + Dr. Domingos |
+| 3–6 | Primeira reunião com parceiro BaaS (Celcoin ou Swap) | Bernardo |
+| 4–8 | Fechar primeiros 5 criadores de saúde via rede Dr. Domingos | Dr. Domingos |
+| 6–12 | Identificar e abordar cliente âncora (criador R$ 200k+/mês) | Bernardo + Dr. Domingos |
+| 8–12 | Versão 1 do produto ArcaAlliance (não WordPress — plataforma real) | Bernardo |
+
+---
+
+### Riscos principais e mitigações
+
+| Risco | Probabilidade | Mitigação |
+|---|---|---|
+| Volume insuficiente para margem financeira relevante | Alta (ano 1) | Aceitar: ano 1 é validação, não lucratividade |
+| Barreira regulatória BaaS | Média | Iniciar conversa com BaaS cedo; operação sem float no MVP |
+| Criador não deixa dinheiro na plataforma | Média | Gamificar incentivos; integrar pagamentos de fornecedores dentro da plataforma |
+| Hotmart/Kiwify copia o modelo (zero taxa) | Baixa no curto prazo | Eles dependem de comissão para sobreviver; não podem zerar facilmente |
+| Concentração em 1 nicho (saúde) | Baixa | É uma vantagem no início; expansão horizontal vem depois da prova de conceito |
+
+---
+
+### Visão de longo prazo (3–5 anos)
+
+```
+Ano 1: Piloto nicho saúde, 50 criadores, prova de conceito do float
+Ano 2: Licença IP + conta digital ArcaAlliance, 200 criadores, R$ 2.4M float
+Ano 3: Expansão para outros nichos (direito, finanças, educação), 1.000 criadores
+Ano 4: Crédito para criadores baseado em histórico de vendas, antecipação de recebíveis
+Ano 5: ArcaAlliance como banco dos criadores de conteúdo no Brasil
+```
+
+O produto de cursos vira infraestrutura. O negócio real é financeiro.
+
+---
+
 ## Como liberar uma nova semana (operação recorrente)
 
 1. Dra. Erica grava a aula → sobe como **Não-Listado** no YouTube
