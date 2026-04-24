@@ -398,21 +398,47 @@ WordPress separa `$menu` de `$submenu`. Remover o item principal do `$menu` não
 
 ### Modelo de receita
 
-**Fonte primária — Float Investment:**
-- Criadores hospedam cursos e recebem pagamentos via ArcaAlliance
-- O saldo custodiado é aplicado automaticamente em CDI overnight via parceiro BaaS
-- ArcaAlliance fica com o spread entre o rendimento bruto e o que repassa ao criador
-- Taxa de comissão por venda: **zero**
+**Modelo híbrido: comissão decrescente + float crescente**
 
-**Estrutura de repasse ao criador (taxas decrescentes por tempo):**
+A comissão começa em 8% (igual Hotmart/Kiwify) e cai gradativamente quanto mais tempo o dinheiro permanece na plataforma. Ao zerar, inverte — o criador começa a receber rendimento sobre o saldo. O CDI acumula desde o dia 1, então a ArcaAlliance nunca fica sem receita.
 
-| Tempo com saldo na plataforma | Criador recebe | ArcaAlliance retém |
+```
+Saque rápido  → captura comissão (como Hotmart)
+Saque tardio  → captura float (melhor que Hotmart)
+Saldo longo   → devolve parte do float ao criador (diferencial único)
+```
+
+**Tabela de taxas (por quinzena):**
+
+| Permanência do saldo | Taxa de comissão | Criador recebe do CDI |
 |---|---|---|
-| Saque imediato (D+1) | 0% do CDI | 100% |
-| 7 dias | 30% do CDI | 70% |
-| 30 dias | 50% do CDI | 50% |
-| 90 dias | 70% do CDI | 30% |
-| 180+ dias | 85% do CDI | 15% |
+| D+0 (saque imediato) | 8% | 0% |
+| Até 15 dias | 5% | 0% |
+| 15 a 30 dias | 2% | 0% |
+| 30 a 60 dias | 0% | 20% CDI |
+| 60 a 90 dias | 0% | 40% CDI |
+| 90 a 180 dias | 0% | 60% CDI |
+| 180+ dias | 0% | 80% CDI |
+
+**Exemplo prático — venda de R$ 100k, CDI 10,5% a.a.:**
+
+| Dia do saque | Comissão | CDI acumulado ArcaAlliance (50% spread) | Receita total |
+|---|---|---|---|
+| Dia 0 | R$ 8.000 | R$ 0 | **R$ 8.000** |
+| Dia 15 | R$ 5.000 | R$ 216 | **R$ 5.216** |
+| Dia 30 | R$ 2.000 | R$ 432 | **R$ 2.432** |
+| Dia 60 | R$ 0 | R$ 864 | **R$ 864** |
+| Dia 90+ | R$ 0 | R$ 1.295+ | **R$ 1.295+** |
+
+A ArcaAlliance nunca perde: ou captura comissão, ou captura float, ou ambos.
+
+**Efeito comportamental (ratchet psicológico):**
+Funciona como o IOF em investimentos — mecanismo que todo brasileiro já conhece. Após 20 dias, o criador pensa *"faltam 10 dias para zerar a taxa, vou esperar"*. Ao zerar, pensa *"já que não pago mais nada e ainda ganho CDI, deixo mais"*. Cada dia aumenta a inércia de permanecer.
+
+**Pitch comercial:**
+> *"Se sacar hoje, cobra 8% — igual Hotmart. Deixar 30 dias, zera. Depois disso, começa a render pra você."*
+
+Crível, concreto, verificável. Sem promessas que soam boas demais.
 
 **Fontes secundárias (futuro):**
 - Antecipação de recebíveis — criador antecipa vendas parceladas com deságio
